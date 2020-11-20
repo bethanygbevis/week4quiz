@@ -32,3 +32,19 @@ var questions = [
       answer: "console.log"
     }
   ];
+
+  var startScreen = document.getElementById("startScreen");
+  var questionsScreen = document.getElementById("questionScreen");
+  questionsScreen.style.display = "none"; 
+
+  var startQuizButton = document.getElementById("startQuizButton");
+
+
+function startQuiz(){
+    startScreen.style.display = "none";
+    questionsScreen.style.display = "block";
+}
+
+
+
+  startQuizButton.onclick = startQuiz; 
