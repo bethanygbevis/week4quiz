@@ -38,15 +38,29 @@ var questionsScreen = document.getElementById("questionScreen");
 var questionTitle = document.getElementById("question");
 var answersListParent = document.getElementById("answers");
 questionsScreen.style.display = "none";
-
+var timerDisplay = document.getElementById("timer");
 var startQuizButton = document.getElementById("startQuizButton");
 var questionBeingAskedIndex = 0;
+var time = 60; 
+var quizTimer; 
 
 function startQuiz() {
   startScreen.style.display = "none";
   questionsScreen.style.display = "block";
-  //start the timer in here and display it on the screen. 
+  startQuizTimer();
+  timerDisplay.textContent = time;
   startQuestions();
+}
+
+function startQuizTimer(){
+  quizTimer = setInterval(function(){
+    time--;
+    timerDisplay.textContent = time;
+    if(time < 0){
+      time = 0;
+      endQuiz();
+    }
+  }, 1000)
 }
 
 //write a function to start displaying questions 1 by 1. 
