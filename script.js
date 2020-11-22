@@ -40,6 +40,10 @@ var answersListParent = document.getElementById("answers");
 questionsScreen.style.display = "none";
 var timerDisplay = document.getElementById("timer");
 var startQuizButton = document.getElementById("startQuizButton");
+var highscoresDisplay = document.getElementById("highscoreSection")
+highscoresDisplay.style.display = "none";
+
+
 var questionBeingAskedIndex = 0;
 var time = 60; 
 var quizTimer; 
@@ -87,6 +91,11 @@ function checkAnswerSelected() {
     alert("Correct!")
   } else {
     alert("Incorrect")
+    time -= 10;
+    if (time <= 0){
+      endQuiz();
+    }
+    timerDisplay.textContent = time;
   }
 
   questionBeingAskedIndex++;
@@ -99,7 +108,10 @@ function checkAnswerSelected() {
 }
  
 function endQuiz(){
-  alert("Quiz over")
+  clearInterval(quizTimer);
+questionsScreen.style.display = "none";
+highscoresDisplay.style.display = "block";
+
 }
 
 
