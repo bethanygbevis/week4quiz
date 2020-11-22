@@ -111,7 +111,20 @@ function endQuiz(){
   clearInterval(quizTimer);
 questionsScreen.style.display = "none";
 highscoresDisplay.style.display = "block";
+var scoreDisplay = document.getElementById("finalScoreDisplay");
+scoreDisplay.textContent = "Your final score was " + time;
 
+var submitScore = document.getElementById("submitScore");
+submitScore.onclick = function(){
+  var highscores = JSON.parse(localStorage.getItem("highscores")) || []
+  var currentUserInitials = document.getElementById("initials").value;
+  var scoreObject = {
+    name: currentUserInitials,
+    score: time
+  }
+  highscores.push(scoreObject);
+  localStorage.setItem("highscores", JSON.stringify(highscores))
+}
 }
 
 
